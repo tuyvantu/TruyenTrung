@@ -12,6 +12,19 @@
             --text: #334155;
             --bg: #f8fafc;
         }
+        .visitor-stats {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        #visit-count {
+            font-weight: 700;
+            color: var(--primary);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
         
@@ -87,11 +100,19 @@
                 Hỗ trợ giao dịch an toàn qua trung gian hoặc chuyển nhượng trực tiếp (Push domain).
             </p>
         </section>
-
+        <div class="visitor-stats">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>Lượt xem trang: <span id="visit-count">...</span></span>
+        </div>
         <footer>
             &copy; 2026 TruyentTrung.com. All rights reserved.
         </footer>
     </div>
-
+<script>
+        function cb(response) {
+            document.getElementById('visit-count').innerText = response.value.toLocaleString();
+        }
+    </script>
+    <script async src="https://api.countapi.xyz/hit/truyentrung.com/visits?callback=cb"></script>
 </body>
 </html>
